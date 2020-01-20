@@ -27,26 +27,8 @@ namespace Packetizer
 
     struct endp {}; // for end of packet sign
 
-    uint8_t crc8(const uint8_t* data, size_t size)
-    {
-        uint8_t result = 0xFF;
-        for (result = 0; size != 0; --size)
-        {
-            result ^= *data++;
-            for (size_t i = 0 ; i < 8; ++i)
-            {
-                if (result & 0x80)
-                {
-                    result <<= 1;
-                    result ^= 0x85; // x8 + x7 + x2 + x0
-                }
-                else
-                    result <<= 1;
-            }
-        }
-        return result;
-    }
-
+    uint8_t crc8(const uint8_t* data, size_t size);
+    
 
 #ifdef __AVR__
     template <uint8_t N_PACKET_DATA_SIZE>
