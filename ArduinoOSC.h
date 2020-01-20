@@ -15,11 +15,7 @@
 
 namespace ArduinoOSC
 {
-    bool match(const String& pattern, const String& test, bool full = true)
-    {
-        if (full) return oscpkt::fullPatternMatch(pattern.c_str(), test.c_str());
-        else      return oscpkt::partialPatternMatch(pattern.c_str(), test.c_str());
-    }
+    bool match(const String& pattern, const String& test, bool full = true);
 
     template <typename S>
     class ArduinoOSCUdp : public OscServerUdp<S>, public OscClientUdp<S>
